@@ -1,211 +1,143 @@
-#include <iostream>
+#include <iostream> 
+#include <cstring>
+#include <string>
+#include <sstream>
+#include <vector>
+
 using namespace std;
 
-struct Timer
-{
-    int hours;
-    int minutes;
-    int seconds;
+//declare struct Timer
+struct Timer {
+	//declare int variables for hours, minutes, and seconds	
+int hours;
+int minutes;
+int seconds;
 };
-
-
-int compareTimes (Timer timerStruct1, Timer timerStruct2) //return an int based on the faster or slower time
-{
-    int x; //variable to hold time differences
-    if (timerStruct1.hours == timerStruct2.hours) //if the hours are equal, move on to minutes
+//declare compareTimes function
+int compareTimes(Timer timer1, Timer timer2) {
+	//compare the hours, then minutes, and then seconds
+	
+    if (timer1.hours < timer2.hours) 
     {
-        cout << "\nthe hours are the same, moving on to minutes";
-
-        if (timerStruct1.minutes == timerStruct2.minutes)//if the minutes are equal move on to seconds 
-        {   
-            cout << "\nThe minutes are the same, moving on to seconds";
-            if (timerStruct1.seconds == timerStruct2.seconds)//if the seconds are equal, the timers are the same
+		return -1;
+	}
+	
+    else if (timer1.hours == timer2.hours) {
+		
+        if (timer1.minutes < timer2.minutes) 
+        {
+			return -1;
+		}
+		else if (timer1.minutes == timer2.minutes) {
+			if (timer1.seconds < timer2.seconds) 
             {
-                x = 0;
-                cout << "\nThe timers are exactly the same";
-            } else if (timerStruct1.seconds != timerStruct2.seconds)
-            {   
-                x = timerStruct1.minutes-timerStruct2.minutes; //returns time of struct 1-2, positive # = struct 1 is slower     
-                cout <<"\nThe seconds are diferent";
-            }
-	    } else if (timerStruct1.minutes != timerStruct2.minutes)
-    		{
-                x = timerStruct1.minutes-timerStruct2.minutes;//returns time of struct 1-2, positive # = struct 1 is slower
-                cout <<"\nThe minutes are diferent";
-        		 
-    		}
-        
-    } else if (timerStruct1.hours != timerStruct2.hours)// if the hours are not equal, return the difference 
-    {
-        x = timerStruct1.hours-timerStruct2.hours; //returns time of struct 1-2, positive # = struct 1 is slower
-        cout <<"\nThe hours are diferent";
-    }
-    return x;
+				return -1;
+			}
+			else if (timer1.seconds == timer2.seconds) 
+            {
+				return 0;
+			}
+			else { //timer1.seconds > timer2.seconds
+				return 1;
+			}
+		}
+		else { //timer1.minutes > timer2.minutes
+			return 1;
+		}
+	}
+	else { //timer1.hours > timer2.hours
+		return 1;
+	}
 }
-
-
-
-//readtimer to fill a timer struct
-Timer readTimer()
-{
-    Timer aStruct;
-    //read in the timer
-    int hour; 
-    int min;
-    int sec;
-    cout << "Enter a timer as hours:minutes:seconds(h:m:s) ";
-    cin >> hour;
-    cin >> min;
-    cin >> sec;
-
-    //set user input values to member values of timerStruct
-    aStruct.hours = hour;
-    aStruct.minutes = min;
-    aStruct.seconds = sec;
-    return aStruct;
-}
-
-/*Timer findMinMaxTimer(Timer timerarray[])
-{
-    Timer min;
-    
-    //from an array of structs, find the min and max timers in the given params
-
-}*/
-
-//createtimerarray
-Timer* createTimerArray(int &size)
-{	
-	// Todo: Write a statement to dynamic allocate memory for the array. 
-    cout << "\nInitializing dynamic array of structs";
-
-    Timer *arraypointer = new Timer[size]; //initialize a dynamic array of Struct type
-    
-    
-
-	// Todo: Write a loop to read the values and store them in the array
-    for (int index = 0; index < size; index++)
-    {
-        arraypointer[index] = readTimer(); // value at index should be read in with readTimer
-    }
-
-    //printing array 
-    cout << "Trying to print array" << endl;
-
-    for (int j = 0; j < size; j++)
-    {
-        cout << "\nPrinting struct at position: " << j << endl;
-
-        cout << "\nThe hours of the timer is: "<< arraypointer->hours << endl;
-        cout << "\nThe minutes of the timer is: " << arraypointer->minutes << endl;;
-        cout << "\nThe seconds of the timer is: " << arraypointer->seconds << endl;
-        arraypointer++;
-    }
-
-
-    //comparing the times
-
-    Timer *min = arraypointer; //create a minimum timer variable for fastest time
-    Timer *max = arraypointer; //create a maximum timer variable for slowest time
-    cout << min->hours;
-    
-    //loop through array 
-    for (int i = 0; i < size; i++)
-    {
-        int x; //variable to hold return value from comparetimes functions
-        x = compareTimes(arraypointer[i],arraypointer[i+1]); // set x = to the return value of comparing the times in 2 arrays, starting with 1 and 2 
-        if (x > 0) //if the return value is positive, structure i+1 is faster (lower time) than structure i 
+//declare findMinMaxTimer function
+void findMinMaxTimer(Timer* array, int size, Timer& min, Timer& max) {
+	//initialize min and max to the first element in the array
+	
+    min = array[0];
+	max = array[0];
+	//compare each element in the array to find the min and max
+	
+    for (int i = 1; i < size; i++) {
+		if (compareTimes(array[i], min) < 0) 
+        //current element is less than min
         {
-            min->hours = (arraypointer+1)->hours;
-            min->minutes = (arraypointer+1)->minutes;
-            min->seconds = (arraypointer+1)->seconds;
-        }
-
-        if (x < 0) //if the return value is negative, structure i is faster (lower time) than structure i+1
+			min = array[i];
+		}
+		else if (compareTimes(array[i], max) > 0) { //current element is greater than max
+			max = array[i];
+		}
+	}
+}
+//declare createTimerArray function
+Timer* createTimerArray(int size) {
+	//create a dynamic array of Timer structs
+	
+    Timer* array = new Timer[size];
+	string s;
+	//read in values for each Timer in the array
+	
+    for (int i = 0; i < size; i++) {
+		
+        cout << "Enter a Timer as hours:minutes:seconds(h:m:s)? ";
+		cin>>s;
+		
+        vector<int> vect;
+		stringstream ss(s);
+		
+        for (int x; ss >> x;) 
         {
-            min->hours = arraypointer->hours;
-            min->minutes = arraypointer->minutes;
-            min->seconds = arraypointer->seconds;
-
-        } else 
-        
-        arraypointer++; //move on to the next array value in memory 
-    }
-    cout << "\nthe fastest timer is: " << min->hours << min->minutes << min->seconds;
-    cout << "\nthe slowest timer is: " << max->hours << max->minutes << max->seconds;
-    
-
-	return arraypointer; //returns the new dynamic array 
+			vect.push_back(x);    
+			if (ss.peek() == ':')
+				ss.ignore();
+		}
+	   
+        array[i].hours =  vect[0];
+    	array[i].minutes =  vect[1];
+    	array[i].seconds =  vect[2];
+		//check for valid input
+		
+        if (array[i].hours < 0 || array[i].minutes < 0 || array[i].seconds < 0 || array[i].minutes >= 60 || array[i].seconds >= 60) 
+        {
+			cout << "Invalid Timer!" << endl;
+			i--;
+        //decrement i so that the user can input again
+		}
+	}
+	//return the address of the array
+	return array;
 }
-
-
-void newSameStruct (Timer &timerStruct1, Timer &timerStruct2) //function to copy values from 1 struct to another 
-{
-    cout << "\nCopying values to new struct";
-    timerStruct2.hours = timerStruct1.hours;
-    timerStruct2.minutes = timerStruct1.minutes;
-    timerStruct2.seconds = timerStruct1.seconds;
-}
-
-void printStruct(Timer aTimerStruct)
-{
-    cout << "\nOutputting struct values: ";
-    cout << "\nHours for first struct: " << aTimerStruct.hours;
-    cout << "\nMinutes for first struct: " << aTimerStruct.minutes;
-    cout << "\nSeconds for first struct: " << aTimerStruct.seconds;
-}
-
-int main()
-{
-    //init 2 structs
-	Timer realtimes; 
-	Timer secondTimer; 
-
-    //init memory to hold user input
-   
-
-    //newSameStruct(realtimes, secondTimer); // assigns exact same values from the user input into a second struct
-    //printStruct(realtimes); //outputs Timer struct values
-
-    
-    //comparing the two structs 
-    
-    /*cout << "Do you want to set up a timer? ";
-    char response;
-    cin >> response;
-    if (response == 'y')
-    {
-        readTimer(secondTimer);
-        printStruct(secondTimer);
-        cout << "\nComparing structs ...";
-        compareTimes(realtimes, secondTimer);
-    }else 
-    {
-        cout << "\n shifting gears";
-        cout << "\n";
-        cout << "\n";
-*/
-	int size;
-	do {
-		cout << "How many timers do you need? ";
+int main() {
+	//declare variables for the size of the array, the array, and the min and max Timers
+	
+    int size;
+	Timer* array;
+	Timer min;
+	Timer max;
+	//get the size of the array from the user
+	
+    do {
+		cout << "How many Timers do you need? ";
 		cin >> size;
-	} while (size <= 0);
-        
-        createTimerArray(size);
-    
-
-        
-       // cout << "Moving on to dyanamic array...";
-        //cout << "Assigning function return to pointer... " <<endl;
-
-        /*
-        
-        cout << "Attempting to output return value: ";
-        cout << "Address of the pointer in main is: " << dynamicpointer; 
-        cout << "Contents of the same pointer is: " << *dynamicpointer;
-        */
-        
-    
-
+		//check for valid input
+		if (size <= 0) 
+        {
+			cout << "Enter a positive value!" << endl;
+		}
+	} 
+    while (size <= 0);
+	//create the array
+	
+    array = createTimerArray(size);
+	//find the min and max Timers
+	
+    findMinMaxTimer(array, size, min, max);
+	//print the min and max Timers
+	
+    cout << "The minimum Timer is: " << min.hours << ":" << min.minutes << ":" << min.seconds << endl;
+	cout << "The maximum Timer is: " << max.hours << ":" << max.minutes << ":" << max.seconds << endl;
+	//free the array
+	
+    delete [] array;
+	
     return 0;
 }
