@@ -9,7 +9,7 @@ struct Timer
 };
 
 
-int compareTimes (Timer timerStruct1, Timer timerStruct2)
+int compareTimes (Timer timerStruct1, Timer timerStruct2) //return an int based on the faster or slower time
 {
     if (timerStruct1.hours == timerStruct2.hours) //if the hours are equal, move on to minutes
     {
@@ -25,18 +25,18 @@ int compareTimes (Timer timerStruct1, Timer timerStruct2)
             } else if (timerStruct1.seconds != timerStruct2.seconds)
             {   
                 cout <<"\nThe seconds are diferent";
-                return timerStruct1.minutes-timerStruct2.minutes;      
+                return timerStruct1.minutes-timerStruct2.minutes; //returns time of struct 1-2, positive # = struct 1 is slower     
             }
 	    } else if (timerStruct1.minutes != timerStruct2.minutes)
     		{
                 cout <<"\nThe minutes are diferent";
-        		return timerStruct1.minutes-timerStruct2.minutes;
+        		return timerStruct1.minutes-timerStruct2.minutes; //returns time of struct 1-2, positive # = struct 1 is slower
     		}
         
     } else if (timerStruct1.hours != timerStruct2.hours)// if the hours are not equal, return the difference 
     {
         cout <<"\nThe hours are diferent";
-        return timerStruct1.hours-timerStruct2.hours;
+        return timerStruct1.hours-timerStruct2.hours; //returns time of struct 1-2, positive # = struct 1 is slower
     }
     return 0;
 }
@@ -50,7 +50,7 @@ Timer readTimer()
     int hour; 
     int min;
     int sec;
-    cout << "Enter a timer as hours:minutes:seconds(h:m:s)? ";
+    cout << "Enter a timer as hours:minutes:seconds(h:m:s) ";
     cin >> hour;
     cin >> min;
     cin >> sec;
@@ -102,23 +102,23 @@ Timer* createTimerArray(int &size)
 
     //comparing the times
 
-    Timer *min = arraypointer;
-    Timer *max = arraypointer;
+    Timer *min = arraypointer; //create a minimum timer variable for fastest time
+    Timer *max = arraypointer; //create a maximum timer variable for slowest time
     cout << min->hours;
     
     //loop through array 
     for (int i = 0; i < size; i++)
     {
-        int x; 
-        x = compareTimes(arraypointer[i],arraypointer[i+1]);
-        if (x > 0)
+        int x; //variable to hold return value from comparetimes functions
+        x = compareTimes(arraypointer[i],arraypointer[i+1]); // set x = to the return value of comparing the times in 2 arrays, starting with 1 and 2 
+        if (x > 0) //if the return value is positive, structure i+1 is faster (lower time) than structure i 
         {
             min->hours = (arraypointer+1)->hours;
             min->minutes = (arraypointer+1)->minutes;
             min->seconds = (arraypointer+1)->seconds;
         }
 
-        if (x < 0)
+        if (x < 0) //if the return value is negative, structure i is faster (lower time) than structure i+1
         {
             min->hours = arraypointer->hours;
             min->minutes = arraypointer->minutes;
@@ -126,7 +126,7 @@ Timer* createTimerArray(int &size)
 
         } else 
         
-        arraypointer++;
+        arraypointer++; //move on to the next array value in memory 
     }
     cout << "\nthe fastest timer is: " << min->hours << min->minutes << min->seconds;
     cout << "\nthe slowest timer is: " << max->hours << max->minutes << max->seconds;
@@ -136,7 +136,7 @@ Timer* createTimerArray(int &size)
 }
 
 
-void newSameStruct (Timer &timerStruct1, Timer &timerStruct2)
+void newSameStruct (Timer &timerStruct1, Timer &timerStruct2) //function to copy values from 1 struct to another 
 {
     cout << "\nCopying values to new struct";
     timerStruct2.hours = timerStruct1.hours;
@@ -155,11 +155,8 @@ void printStruct(Timer aTimerStruct)
 int main()
 {
     //init 2 structs
-    Timer realtimes; 
-    Timer secondTimer; 
-
-   
-
+	Timer realtimes; 
+	Timer secondTimer; 
 
     //init memory to hold user input
    
@@ -185,12 +182,11 @@ int main()
         cout << "\n";
         cout << "\n";
 */
-
-        int size;
-        do {
-		    cout << "How many timers do you need? ";
-		    cin >> size;
-	    } while (size <= 0);
+	int size;
+	do {
+		cout << "How many timers do you need? ";
+		cin >> size;
+	} while (size <= 0);
         
         createTimerArray(size);
     
