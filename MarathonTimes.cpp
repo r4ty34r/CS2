@@ -11,6 +11,7 @@ struct Timer
 
 int compareTimes (Timer timerStruct1, Timer timerStruct2) //return an int based on the faster or slower time
 {
+    int x; //variable to hold time differences
     if (timerStruct1.hours == timerStruct2.hours) //if the hours are equal, move on to minutes
     {
         cout << "\nthe hours are the same, moving on to minutes";
@@ -20,26 +21,28 @@ int compareTimes (Timer timerStruct1, Timer timerStruct2) //return an int based 
             cout << "\nThe minutes are the same, moving on to seconds";
             if (timerStruct1.seconds == timerStruct2.seconds)//if the seconds are equal, the timers are the same
             {
+                x = 0;
                 cout << "\nThe timers are exactly the same";
-                return 0;
             } else if (timerStruct1.seconds != timerStruct2.seconds)
             {   
+                x = timerStruct1.minutes-timerStruct2.minutes; //returns time of struct 1-2, positive # = struct 1 is slower     
                 cout <<"\nThe seconds are diferent";
-                return timerStruct1.minutes-timerStruct2.minutes; //returns time of struct 1-2, positive # = struct 1 is slower     
             }
 	    } else if (timerStruct1.minutes != timerStruct2.minutes)
     		{
+                x = timerStruct1.minutes-timerStruct2.minutes;//returns time of struct 1-2, positive # = struct 1 is slower
                 cout <<"\nThe minutes are diferent";
-        		return timerStruct1.minutes-timerStruct2.minutes; //returns time of struct 1-2, positive # = struct 1 is slower
+        		 
     		}
         
     } else if (timerStruct1.hours != timerStruct2.hours)// if the hours are not equal, return the difference 
     {
+        x = timerStruct1.hours-timerStruct2.hours; //returns time of struct 1-2, positive # = struct 1 is slower
         cout <<"\nThe hours are diferent";
-        return timerStruct1.hours-timerStruct2.hours; //returns time of struct 1-2, positive # = struct 1 is slower
     }
-    return 0;
+    return x;
 }
+
 
 
 //readtimer to fill a timer struct
