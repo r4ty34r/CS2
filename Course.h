@@ -53,6 +53,7 @@ class Course {
 	//string Instructor; //instructor name 
         //string StartTime; 
         //string EndTime;
+	//11-26 OB: Added classRoster
         	vector<Student *> classRoster;
 };
 
