@@ -5,7 +5,8 @@ A series of files designed to create and manage University Memembers.
 
 Function declarations are hosted .h files and definitions are in .cpp files.
 
-To submit an alteration: 
+To submit an alteration:
+
     -Click Add file
     -Upload files
     -Choose files where alterations have been made
