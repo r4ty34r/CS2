@@ -49,6 +49,7 @@ class Course {
 		string Name; //name of the course 
         	int Credits; //number of credits   
 	    	int CourseNum; //course reference number CRN 
+	Student * StudentPtr;
         //string Location; // building & room number
 	//string Instructor; //instructor name 
         //string StartTime; 
