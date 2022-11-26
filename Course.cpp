@@ -38,9 +38,8 @@ using namespace std;
 Course::Course()
 {
 	Name = "anewname";
-    	Credits = 4; //hard coded as 4 for CS2 Fall '22
+    Credits = 4; //hard coded as 4 for CS2 Fall '22
 	CourseNum = 0; 
-	
     
     //initialize the vector with something 
 
@@ -85,10 +84,8 @@ void Course::printCourse()
     //returns the CRN + course name
 }
 
-//11-26 OB: function to add a student (pointer) to the roster
-
-void Course::addToRoster(Student * aStudentPtr){
-    classRoster.push_back(aStudentPtr);
+void Course::addToRoster(Student *studentptr){
+    classRoster.push_back(studentptr);
 }
 
 Student Course::getStudent(string nameofstudent){
