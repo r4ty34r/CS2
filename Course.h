@@ -45,18 +45,14 @@ class Course {
  
 //OB: commented out certain private members
 	private:
-	    string Name; //name of the course 
-        int Credits; //number of credits   
-	    int CourseNum; //course reference number CRN 
+		string Name; //name of the course 
+        	int Credits; //number of credits   
+	    	int CourseNum; //course reference number CRN 
         //string Location; // building & room number
-	    //string Instructor; //instructor name 
+	//string Instructor; //instructor name 
         //string StartTime; 
         //string EndTime;
-        
-        //TODO: 
-        //  include student class, create a vector of student pointers
-        //  vector should be called class roster 
-        vector<Student *> classRoster;
+       		vector<Student *> classRoster;
 
 };
 
