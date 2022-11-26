@@ -1,6 +1,8 @@
 #ifndef Course_H
 #define Course_H
+#include "Student.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 //TODO: class roster 
@@ -30,9 +32,9 @@ class Course {
         string getName(); //returns the course name 
         int getCredits(); //returns number of credits in the course 
         int getCRN(); //returns the course number (course reference number)
-
+        void addToRoster(string name); // pushes back student to roster vector 
        
-        string getStudent(string nameofstudent); //returns the name and ID of given student 
+        Student getStudent(string nameofstudent); //returns a pointer to a given student 
         
         
 
@@ -54,10 +56,7 @@ class Course {
         //TODO: 
         //  include student class, create a vector of student pointers
         //  vector should be called class roster 
-        //create vector for class roster
-
-        
-        
+        vector<Student *> classRoster;
 
 };
 

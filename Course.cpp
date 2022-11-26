@@ -1,4 +1,5 @@
 #include "Course.h"
+#include "Student.h"
 #include <iostream>
 #include <string> 
 
@@ -26,10 +27,12 @@ using namespace std;
         void printCourse(); //OB: done
          
     class roster     
-    string getStudent(string nameofstudent); //returns the name and ID of given student 
-        
+    string getStudent(string nameofstudent); 
+    //returns the name and ID of given student 
+-   Add student to roster 
+-   get student from roster 
+     
 */
-
 
 //default constructor
 Course::Course()
@@ -37,6 +40,8 @@ Course::Course()
 	Name = "anewname";
     Credits = 4; //hard coded as 4 for CS2 Fall '22
 	CourseNum = 0; 
+    
+    //initialize the vector with something 
 
 	//Location = “anewLocation”;
 	//Credits = 0;
@@ -77,6 +82,21 @@ void Course::printCourse()
     
     
     //returns the CRN + course name
+}
+
+void Course::addToRoster(Student *studentptr){
+    classRoster.push_back(studentptr);
+}
+
+Student Course::getStudent(string nameofstudent){
+    Student * aNewPointer;
+    //TODO: loop through vector, if given name matches name in vector, return anewpointer
+    /*
+    for (int i = 0; i < classRoster.size(); i++)
+    {
+        if (classRoster.at(i)->getName())
+    }
+    */
 }
 
 
