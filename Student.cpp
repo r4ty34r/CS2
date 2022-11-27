@@ -80,16 +80,27 @@ string Student::getMinor(string& minor)
 Date Student::getGradDate()
 {
         int year;
-        string season;
+        int aMonth = 0;
+        
         cout << "In what year does the student graduate?" << endl;
         cin >> year;
-        cout << "In what season does the student graduate?" << endl;
+        //11-27 OB: added input for month in order to call grDate with full constructor
+        cout << "In what month does the student graduate?" << endl;//11-27 OB: see Date.cpp/setSeason()
+        //cout << "In what season does the student graduate?" << endl;//OB: commented out 
 
-        cin >> season;
-        Date grDate;
-        //11-27 OB: commented out the following 2 lines, should be called with: grDate.setSeason(); grDate.setGradDate(int m, int y);
-        //grDate.season = season;
+        cin >> aMonth; //11-27 OB: changed season to aMonth 
+        
+        //11-27 OB: commented out the following lines, should be called with:  grDate.setSeason(season)
+        /*
+         Date grDate;
+        grDate.season = season;
         grDate.year = year;
+        */           
+
+        Date grDate;
+        grDate.setGradDate(aMonth, year);
+        grDate.setSeason();
+        
         return grDate;
 }
 
