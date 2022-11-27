@@ -87,6 +87,8 @@ Date Student::getGradDate()
 
         cin >> season;
         Date grDate;
+        //11-27 OB: commented out the following line, should be called with:
+        //               grDate.setSeason(season);
         grDate.season = season;
         grDate.year = year;
         return grDate;
@@ -122,15 +124,17 @@ Date Student::getGradDate()
 // (optional)
 //11/22/22 Grace Williams
 
+
+//11-27 OB: outputting the methods should be done with (); 
 void Student::printStudent()
 {
-cout << “The student’s information is as follows: “<< endl;
-cout << “Name: “ << Student::Name.firstN << “ “ << Student::Name.lastN << endl;
-cout << “ID Number: A“ << Student::ID.num << endl;
-cout << “Birthday: “ <<Student::birthDate.day << “/” << Student::birthDate.month << “/” << Student::birthDate.year << endl;
-cout << “Graduation Time: “ << Student::gradDate << endl;
-cout << “Major: “ << Student.major << endl;
-cout << “Minor, if applicable: “ << Student.minor << endl;
+cout << "The student’s information is as follows: "<< endl;
+cout << "Name: " << Student::Name.firstN << " " << Student::Name.lastN << endl;
+cout << "ID Number: A" << Student::ID.num << endl;
+cout << "Birthday: " <<Student::birthDate.day << "/" << Student::birthDate.month << "/" << Student::birthDate.year << endl;
+cout << "Graduation Time: " << Student::gradDate << endl;
+cout << "Major: " << Student.major << endl;
+cout << "Minor, if applicable: " << Student.minor << endl;
 
 }
 

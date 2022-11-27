@@ -26,9 +26,9 @@ class Student
             Name getName();
             // removed Date getBirthDay();
             Date getGradDate();
-            //OB: added string param to getMajor to match definition in Student.cpp file
+            //11-26 OB: added string param to getMajor to match definition in Student.cpp file
             string getMajor(string &major);
-            //OB: added string param to getMinor to match definition in Student.cpp file
+            //11-26 OB: added string param to getMinor to match definition in Student.cpp file
             string getMinor(string &minor);
             double getGPA();
             void printStudent();
