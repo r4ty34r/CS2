@@ -3,6 +3,15 @@
 #include<string>
 using namespace std;
 
+//11-27 OB: assigned default constructor values 
+Date::Date()
+{
+        month = 1;
+        day = 1;
+        year = 1;
+        season = "null";
+}
+
 void Date::setDate(int m, int d, int y) //sets user input into date in m/d/y
 {
         month = m;
@@ -17,6 +26,9 @@ void Date::setGradDate(int m, int y)
 }
 
 //mutator sets the season of the month of date; Winter (December, January, February), Spring (March, April, May), Summer (June, July, August), or Fall (September, October, November)
+
+//11-27 OB: note that SetSeason takes no parameters
+//      it is called differently in /getGradDate() function in Student.cpp file
 void Date::setSeason()
 {
         if(getMonth() == 12 || getMonth() == 1 || getMonth() == 2)

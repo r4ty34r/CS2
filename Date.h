@@ -5,6 +5,8 @@ using namespace std;
 
 class Date{
 public:
+        //11-27 OB: added default constructor 
+        Date();
         Date( int m, int d, int y) {
                 month = m;
                 day = d;

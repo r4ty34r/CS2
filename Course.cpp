@@ -8,24 +8,9 @@ using namespace std;
 
 //TODO:
 /*
-        string getStartTime(); //unused
-        string getEndTime(); //unused 
-        string getInstructor(); //unused
-        int getCredits(); //unused 
-        string getCourseLocation(); //unused
-        void setStartTime();//unused 
-        void setEndTime(); //unused
-        void setInstructor(); //unused
-        void setCredits(); //unused
-        void setDays(int days); //unused 
-        
-        void setName(); //OB: done
-        void setCourseNum(); //OB: done
-        string getName(); //OB: done
-        int getCourseNum(); //OB: done 
-        int getCRN(); //OB: done
-        void printCourse(); //OB: done
-         
+      function to assign values to Pointer 
+      add functions to get pointer values
+
     class roster     
     string getStudent(string nameofstudent); 
     //returns the name and ID of given student 
@@ -39,9 +24,8 @@ Course::Course()
 {
 	Name = "anewname";
     Credits = 4; //hard coded as 4 for CS2 Fall '22
-	CourseNum = 0; 
-    
-    //initialize the vector with something 
+	CourseNum = 0;
+    Pointer = new Student;
 
 	//Location = “anewLocation”;
 	//Credits = 0;
@@ -79,17 +63,17 @@ string Course::getName()
 void Course::printCourse()
 {
     cout << "\n"<< CourseNum << " " << Name << endl;
-    
-    
     //returns the CRN + course name
 }
 
-void Course::addToRoster(Student *studentptr){
-    classRoster.push_back(studentptr);
+void Course::addToRoster(Student *studentPtr)
+{
+    classRoster.push_back(studentPtr);
 }
 
-Student Course::getStudent(string nameofstudent){
-    Student * aNewPointer;
+Student * Course::getStudent()
+{
+    
     //TODO: loop through vector, if given name matches name in vector, return anewpointer
     /*
     for (int i = 0; i < classRoster.size(); i++)
@@ -97,6 +81,8 @@ Student Course::getStudent(string nameofstudent){
         if (classRoster.at(i)->getName())
     }
     */
+
+   return Pointer;
 }
 
 
