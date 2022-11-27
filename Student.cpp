@@ -87,9 +87,8 @@ Date Student::getGradDate()
 
         cin >> season;
         Date grDate;
-        //11-27 OB: commented out the following line, should be called with:
-        //               grDate.setSeason(season);
-        grDate.season = season;
+        //11-27 OB: commented out the following 2 lines, should be called with: grDate.setSeason(); grDate.setGradDate(int m, int y);
+        //grDate.season = season;
         grDate.year = year;
         return grDate;
 }
