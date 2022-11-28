@@ -1,4 +1,4 @@
-//Tu Nguyen
+//Tu Nguyen, Oscar Bruno
 #ifndef ID_h
 #define ID_h
 #include <iostream>
