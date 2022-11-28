@@ -12,12 +12,11 @@ ID::ID()
     {
         num += 1;
         string s;
-        s = letter + to_string(num);
-        fullID = s;
+        s = letter + to_string(num); //concatenates char 'A' with 'num'
+        fullID = s; //assigns full ID to private member 
     }
 
 string ID::getID()
 {
-    // create string variable, return full ID as string
-    return fullID;
+    return fullID; 
 }
