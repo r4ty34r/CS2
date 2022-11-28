@@ -1,4 +1,4 @@
-//Tu Nguyen
+//Tu Nguyen, Oscar Bruno
 
 #include <iostream>
 #include <string>
