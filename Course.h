@@ -1,3 +1,5 @@
+//Group members: Mohammad, Oscar, Taylor, Valerie
+
 #ifndef Course_H
 #define Course_H
 #include "Student.h"
