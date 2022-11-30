@@ -1,5 +1,3 @@
-//Group members: Mohammad, Oscar, Taylor, Valerie
-
 #ifndef Course_H
 #define Course_H
 #include "Student.h"
@@ -36,7 +34,9 @@ class Course {
         int getCRN(); //returns the course number (course reference number)
         void addToRoster(Student *studentPtr); // pushes back student to roster vector 
        
-        Student *getStudent(); //returns a student pointer 
+        void printRosterNames();
+        Student *getStudent(Student * aPointer); //returns a student pointer 
+        
 
 //TODO:
 /*

@@ -2,6 +2,7 @@
 #include "Student.h"
 #include <iostream>
 #include <string> 
+#include <vector>
 
 
 using namespace std;
@@ -71,20 +72,45 @@ void Course::addToRoster(Student *studentPtr)
     classRoster.push_back(studentPtr);
 }
 
-Student * Course::getStudent()
+
+//11-28 OB: added 
+void Course::printRosterNames()
 {
-    
-    //TODO: loop through vector, if given name matches name in vector, return anewpointer
-    /*
+
+    cout << "Printing information for each student in the roster" << endl;
     for (int i = 0; i < classRoster.size(); i++)
     {
-        if (classRoster.at(i)->getName())
+        classRoster.at(i)->printStudent();
     }
-    */
-
-   return Pointer;
+    
 }
 
+
+/*
+Student * Course::getStudent(Student * aPointer)
+{
+    int c = 0;
+    
+    //TODO: loop through vector, if given name matches name in vector, return that student's pointer
+    
+    for (int i = 0; i < classRoster.size(); i++)
+    {
+        if (classRoster.at(i)->getName() == aPointer->getName())
+        {
+            c = i;
+            break;
+            return classRoster.at(c);
+        } else
+        {
+            cout << "No student pointer in class roster";
+            c = nullptr;
+            
+        }
+    }
+    
+}
+
+*/
 
 //OB
 /*

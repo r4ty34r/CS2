@@ -20,6 +20,7 @@ class Student
             void setGPA(double GPA);
             void setMajor(string major);
             void setMinor(string minor);
+            
 
         //accessors
             ID getID();
@@ -32,7 +33,7 @@ class Student
             string getMinor(string &minor);
             double getGPA();
             void printStudent();
-            Student setStudentInfo();
+            void setStudentInfo(string Major, string fname, string lname);
 
         private:
             string major, minor;

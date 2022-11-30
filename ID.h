@@ -1,4 +1,4 @@
-//Tu Nguyen, Oscar Bruno
+//Tu Nguyen
 #ifndef ID_h
 #define ID_h
 #include <iostream>
@@ -12,14 +12,16 @@ class ID
 public:
 
     static int num; // static int to start ID number
-    ID(); //default constructor 
+    ID();
+
+    //compare IDs
     string getID(); // return full ID number as a string
     void printID(); // print full ID number
 
-    //TODO: compare 2 IDs
-    
 private:
-    char letter = 'A'; // Letter to start ID
+    char letter; // Letter to start ID
+
     string fullID; // variable to combine the letter and random numbers
 };
+
 #endif

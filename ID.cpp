@@ -1,4 +1,4 @@
-//Tu Nguyen, Oscar Bruno
+//Tu Nguyen
 
 #include <iostream>
 #include <string>
@@ -11,12 +11,14 @@ int ID::num = 1000000;
 ID::ID()
     {
         num += 1;
+        letter = 'A';
         string s;
-        s = letter + to_string(num); //concatenates char 'A' with 'num'
-        fullID = s; //assigns full ID to private member 
+        s = letter + to_string(num);
+        fullID = s;
     }
 
 string ID::getID()
 {
-    return fullID; 
+    // create string variable, return full ID as string
+    return fullID;
 }

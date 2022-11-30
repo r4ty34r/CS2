@@ -125,3 +125,4 @@ void Date::Print()
 void Date::printSeasonAndYear()
 { //prints the season and year of the date
         cout << getSeason() << " " << getYear();
+}

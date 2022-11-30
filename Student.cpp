@@ -2,10 +2,21 @@
 #include <iostream>
 #include "Date.h"
 #include "ID.h"
-#include "Name.h"
+#include "name.h"
 #include <string>
+#include <ostream>
 
 //.cpp file has the function definitions
+
+//11-27 OB: added default constructor 
+
+Student::Student()
+{
+        major = "A";
+        minor = "B";
+        GPA = 0.000;
+        //studentName = "AAA";
+};
 
 //asks user to input GPA as a double
 void Student::setGPA(double GPA)
@@ -138,16 +149,28 @@ Date Student::getGradDate()
 //11-27 OB: outputting the methods should be done with (); 
 void Student::printStudent()
 {
-cout << "The student’s information is as follows: "<< endl;
-cout << "Name: " << Student::Name.firstN << " " << Student::Name.lastN << endl;
-cout << "ID Number: A" << Student::ID.num << endl;
-cout << "Birthday: " <<Student::birthDate.day << "/" << Student::birthDate.month << "/" << Student::birthDate.year << endl;
-cout << "Graduation Time: " << Student::gradDate << endl;
-cout << "Major: " << Student.major << endl;
-cout << "Minor, if applicable: " << Student.minor << endl;
+cout << "The student's information is as follows: "<< endl;
+//cout << "Name: " << Student::Name.firstN << " " << Student::Name.lastN << endl; //11-27 OB: commented out 
+cout << "Name: " << studentName.getName() << endl; //11-27 OB: added in place of commented out line above 
+//cout << "ID Number: A" << Student::ID.num << endl; //11-27 OB: commented out 
+cout << "ID Number: " << studentID.getID() << endl;//11-27 OB: added in place of commented out line above 
+//cout << "Birthday: " <<Student::birthDate.day << "/" << Student::birthDate.month << "/" << Student::birthDate.year << endl; //private member removed 
+//cout << "Graduation Time: " << Student::gradDate << endl;
+
+//cout << "Graduation Time: " << getGradDate() << endl; //11-27 OB: commented out to use osstream 
+
+//trying osstream output, getting cout << operand error
+
+
+//cout << "Major: " << Student.major << endl; //11-27 OB: commented out to match definition 
+//cout << "Major: " <<  
+//cout << "Minor, if applicable: " << Student.minor << endl;
 
 }
 
+//11-27 OB: commented out the following 2 functions; already defined in ID.cpp
+
+/*
 ID::setID(){             //function to combine the character and the random number
 num+=1;
 string s;
@@ -159,14 +182,19 @@ ID::getID(){
         //create string variable, return full ID as string
         return fullID;
 }
+*/
 
 
 //11/22/22 Grace Williams
 //creating a sample student to which we can assign all the information
-Student Student::setStudentInfo()
+void Student::setStudentInfo(string Major, string fname, string lname)
 {
-Student sampleStudent;
+        //11-28 OB: updated assignments 
+        major = Major;       
+        studentID.getID();
+        studentName.setName(fname, lname); 
 
+/*
 sampleStudent.studentName = student::getName();
 sampleStudent.gradDate = Student::getGradDate();
 sampleStudent.birthDay = Student::getBirthDate();
@@ -174,6 +202,12 @@ sampleStudent.major = Student::getMajor();
 sampleStudent.minor = Student::getMinor();
 sampleStudent.ID = Student::getID();
 sampleStudent.GPA = Student::getGPA();
+*/
+//new assignments
 
-        return sampleStudent;
+
+
+        //return sampleStudent;
 }
+
+
