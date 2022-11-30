@@ -5,13 +5,11 @@
 
 using namespace std;
 
+//11-29 OB: added this for a quick print of a dynamically created student 
 void pointerprint (Student* aPointer)
 {
     aPointer->printStudent();
 }
-
-//TODO: 
-//      include student class, test out class roster 
 
 //OB: created driver program 
 int main(){
