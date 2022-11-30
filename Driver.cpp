@@ -57,6 +57,8 @@ int main(){
 
     cout << "Calling print roster a second time: " << endl;
     newCourse.printRosterNames();
+    
+    pointerprint(anotherPointer);
 
     cout << "\nDone testing." << endl;
 
