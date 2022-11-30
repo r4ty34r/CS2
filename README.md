@@ -5,7 +5,7 @@ A series of files designed to create and manage University Memembers.
 
 Function declarations are hosted .h files and definitions are in .cpp files.
 
-Program driver is located Coursedriver.cpp
+Program driver is located Driver.cpp
 
 To submit an alteration: 
 
