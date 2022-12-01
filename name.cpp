@@ -67,13 +67,20 @@ string Name :: removePunct1(string first) // added by Desilee Roman takes first 
                         string1 += first[i];
                 }
 
-                /*if(isupper(string1[i]))
-                {
-                        string1[i] = tolower(string1[i]);
-                }*/
-
         }
+        if(islower(string1[0])) // if the first letter is lowercase it converts it to uppercase
+	    {
+		    string1[0] = toupper(string1[0]);
+	    }
 
+	    int length2 = string1.size();
+	    for(int j = 1; j < length2; j++)
+	    {
+		    if(isupper(string1[j]))
+		    {
+			    string1[j] = tolower(string1[j]);
+		    }
+	    }
         return string1;
 }
 string Name :: removePunct2(string last) // added by Desilee Roman takes last name and removes punctuation
@@ -89,12 +96,19 @@ string Name :: removePunct2(string last) // added by Desilee Roman takes last na
                 {
                         string2 += last[j];
                 }
-
-                /*if(isupper(string2[j]))
-                {
-                        string2[j] = tolower(string2[j]);
-                }*/
         }
+        if(islower(string2[0]))
+	    {
+		    string2[0] = toupper(string2[0]);
+	    }
 
+	    int length4 = string2.size(); 
+	    for(int i = 1; i < length4; i++)
+	    {
+		    if(isupper(string2[i]))
+		    {
+			    string2[i] = tolower(string2[i]);
+		    }
+	    }
         return string2;
 }
