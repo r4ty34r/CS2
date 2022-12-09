@@ -16,4 +16,4 @@ To submit an alteration:
     -Commit Changes 
     
  to compile: 
-    g++ ID.h ID.cpp name.h name.cpp Date.h Date.cpp Student.h Student.cpp Course.h Course.cpp Driver.cpp
+    g++ ID.h ID.cpp name.cpp Date.cpp Student.cpp Course.cpp Driver.cpp
